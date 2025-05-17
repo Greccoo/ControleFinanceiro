@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultar e Registrar Movimentações</title>
+</head>
+
+<body>
+    <header>
+        <h1>Consultar e Registrar Movimentações</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="consultar_registrar.html">Consultar/Registrar</a></li>
+                <li><a href="relatorio.html">Relatório</a></li>
+                <li><a href="ajuda.html">Ajuda</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="consultar">
+            <h2>Consultar</h2>
+            <div>
+                <button type="button" id="btnConsultarEntradas">Consultar Entradas</button>
+                <button type="button" id="btnConsultarSaidas">Consultar Saídas</button>
+                <button type="button" id="btnConsultarContasAPagar">Consultar Contas a Pagar</button>
+            </div>
+            <div id="areaConsultaResultados">
+                <p><em>Selecione uma opção acima para ver os resultados.</em></p>
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="registrar">
+            <h2>Registrar</h2>
+            <div>
+                <button type="button" id="btnFormEntrada">Registrar Nova Entrada</button>
+                <button type="button" id="btnFormSaida">Registrar Nova Saída (Pagamento)</button>
+                <button type="button" id="btnFormContaAPagar">Registrar Nova Conta a Pagar</button>
+            </div>
+
+            <!-- Container para o formulário de Registrar Entrada (inicialmente escondido) -->
+            <div id="formNovaEntradaContainer" style="display: none; margin-top: 20px; border: 1px solid #ccc; padding: 15px;">
+                <h3>Registrar Nova Entrada</h3>
+                <form id="formRegistrarEntrada">
+                    <div>
+                        <label for="data_entrada">Data da Entrada:</label>
+                        <input type="date" id="data_entrada" name="data_entrada" required>
+                    </div>
+                    <div>
+                        <label for="origem_entrada">Origem:</label>
+                        <select id="origem_entrada" name="origem_entrada" required>
+                            <option value="" selected disabled>Selecione uma origem</option>
+                            <option value="salario">Salário</option>
+                            <option value="investimentos">Investimentos</option>
+                            <option value="venda">Venda</option>
+                            <option value="ajuda">Ajuda de outras pessoas</option>
+                            <option value="outros">Outros</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="valor_entrada">Valor:</label>
+                        <input type="number" id="valor_entrada" name="valor_entrada" required step="0.01" min="0">
+                    </div>
+                    <div>
+                        <label for="destino_entrada">Destino:</label>
+                        <select id="destino_entrada" name="destino_entrada" required>
+                            <option value="" selected disabled>Selecione um destino</option>
+                            <option value="poupanca">Poupança</option>
+                            <option value="investimentos_destino">Investimentos (Destino)</option> <!-- Renomeado para evitar conflito de valor com origem -->
+                            <option value="banco_bb">Banco do Brasil</option>
+                            <option value="banco_itau">Itaú</option>
+                            <option value="banco_bradesco">Bradesco</option>
+                            <option value="banco_santander">Santander</option>
+                            <option value="banco_caixa">Caixa</option>
+                            <option value="outros_destino">Outros (Destino)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <button type="submit">Salvar Entrada</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Container para o formulário de Registrar Saída (inicialmente escondido) -->
+            <div id="formNovaSaidaContainer" style="display: none; margin-top: 20px; border: 1px solid #ccc; padding: 15px;">
+                <h3>Registrar Nova Saída (Pagamento)</h3>
+                <form id="formRegistrarSaida">
+                    <div>
+                        <label for="data_saida">Data da Saída:</label>
+                        <input type="date" id="data_saida" name="data_saida" required>
+                    </div>
+                    <div>
+                        <label for="item_saida">Descrição:</label>
+                        <input type="text" id="item_saida" name="item_saida" required>
+                    </div>
+                    <div>
+                        <label for="valor_saida">Valor:</label>
+                        <input type="number" id="valor_saida" name="valor_saida" required step="0.01" min="0">
+                    </div>
+                    <div>
+                        <label for="venc_saida">Vencimento (se aplicável):</label>
+                        <input type="date" id="venc_saida" name="venc_saida"> <!-- Tornar opcional? Se for pagamento de algo já registrado como conta a pagar, pode não ser necessário aqui -->
+                    </div>
+                    <div>
+                        <label for="periodicidade_saida">Periodicidade (Nº de meses, 0 ou 1 para único):</label>
+                        <input type="number" id="periodicidade_saida" name="periodicidade_saida" placeholder="0 ou 1 para único" min="0" value="1" required>
+                    </div>
+                    <div>
+                        <label for="categ_saida">Categoria:</label>
+                        <select id="categ_saida" name="categ_saida" required>
+                            <option value="" selected disabled>Selecione uma categoria</option>
+                            <option value="carro">Carro</option>
+                            <option value="cursos">Cursos</option>
+                            <option value="faturacartao">Fatura Cartão</option>
+                            <option value="farmacia">Farmacia</option>
+                            <option value="mercado">Mercado</option>
+                            <option value="pascoa">Pascoa</option>
+                            <option value="refeicao">Refeição</option>
+                            <option value="role">Role</option>
+                            <option value="saude">Saúde</option>
+                            <option value="transporte">Transporte</option>
+                            <option value="contascasa">Contas Casa</option>
+                            <option value="emprestimo">Emprestimo</option>
+                            <option value="dasmei">DAS MEI</option>
+                            <option value="outros_saida">Outros (Saída)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="forma_pagamento">Forma de Pagamento:</label>
+                        <select id="forma_pagamento" name="forma_pagamento" required>
+                            <option value="" selected disabled>Selecione uma forma de pagamento</option>
+                            <option value="dinheiro">Dinheiro</option>
+                            <option value="cartao_debito">Cartão de Débito</option>
+                            <option value="cartao_credito">Cartão de Crédito</option>
+                            <option value="transferencia">Transferência</option>
+                            <option value="pix">PIX</option>
+                        </select>
+                    </div>
+                    <div>
+                        <button type="submit">Salvar Saída</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Container para o formulário de Registrar Conta a Pagar (inicialmente escondido) -->
+            <div id="formNovaContaAPagarContainer" style="display: none; margin-top: 20px; border: 1px solid #ccc; padding: 15px;">
+                <h3>Registrar Nova Conta a Pagar</h3>
+                <form id="formRegistrarContaAPagar">
+                    <div>
+                        <label for="descricao_conta_pagar">Descrição:</label>
+                        <input type="text" id="descricao_conta_pagar" name="descricao_conta_pagar" required>
+                    </div>
+                    <div>
+                        <label for="categoria_conta_pagar">Categoria:</label>
+                        <select id="categoria_conta_pagar" name="categoria_conta_pagar" required>
+                            <option value="" selected disabled>Selecione uma categoria</option>
+                            <option value="carro_conta">Carro</option>
+                            <option value="cursos_conta">Cursos</option>
+                            <option value="faturacartao_conta">Fatura Cartão</option>
+                            <option value="farmacia_conta">Farmacia</option>
+                            <option value="mercado_conta">Mercado</option>
+                            <option value="pascoa_conta">Pascoa</option>
+                            <option value="refeicao_conta">Refeição</option>
+                            <option value="role_conta">Role</option>
+                            <option value="saude_conta">Saúde</option>
+                            <option value="transporte_conta">Transporte</option>
+                            <option value="contascasa_conta">Contas Casa</option>
+                            <option value="emprestimo_conta">Emprestimo</option>
+                            <option value="dasmei_conta">DAS MEI</option>
+                            <option value="outros_conta">Outros (Conta a Pagar)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="vencimento_conta_pagar">Data de Vencimento:</label>
+                        <input type="date" id="vencimento_conta_pagar" name="vencimento_conta_pagar" required>
+                    </div>
+                    <div>
+                        <label for="valor_conta_pagar">Valor Estimado/Exato:</label>
+                        <input type="number" id="valor_conta_pagar" name="valor_conta_pagar" required step="0.01" min="0">
+                    </div>
+                    <div>
+                        <button type="submit">Salvar Conta a Pagar</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Mateus Carvalho Grecco / Projeto de Controle Financeiro</p>
+    </footer>
+
+</body>
+</html>
