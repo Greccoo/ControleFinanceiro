@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Entrada</title>
+</head>
+<body>
+    <form>
+        <h1>Registrar Entrada</h1>
+
+        <div>
+            <label for="data_entrada">Data da Entrada:</label>
+            <input type="date" id="data_entrada" name="data_entrada" required>
+        </div>
+
+        <div>
+            <label for="origem_entrada">Origem:</label>
+            <select id="origem_entrada" name="origem_entrada" required>
+                <option value="" selected disabled>Selecione uma origem.</option>
+                <option value="salario">Salário</option>
+                <option value="investimentos">Investimentos</option>
+                <option value="venda">Venda</option>
+                <option value="ajuda">Ajuda de outras pessoas</option>
+                <option value="outros">Outros</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="valor_entrada">Valor:</label>
+            <input type="number" id="valor_entrada" name="valor_entrada" required step="0.01" min="0">
+        </div>
+
+        <div>
+            <label for="destino_entrada">Destino:</label>
+            <select id="destino_entrada" name="destino_entrada" required>
+            <option value="" selected disabled>Selecione um destino.</option>
+            <option value="poupanca">Poupança/Caixinha</option>
+            <option value="investimentos">Investimentos</option>
+            <option value="banco1">Bando do Brasil</option>
+            <option value="banco2">Itaú</option>
+            <option value="banco3">Bradesco</option>
+            <option value="banco4">Santander</option>
+            <option value="banco5">Caixa</option>
+            <option value="outros">Outros</option>
+            </select>
+        </div>
+
+        <button type="submit">Registrar Entrada</button>
+    </form>
+</body>
+</html>
