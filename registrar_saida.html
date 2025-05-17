@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Saída</title>
+</head>
+<body>
+    <form>
+        <h1>Registrar Saída</h1>
+        <div>
+            <label for="data_saida">Data da Saída:</label>
+            <input type="date" id="data_saida" name="data_saida" required>
+        </div>
+        
+        <div>
+            <label for="item_saida">Descerição:</label>
+            <input type="text" id="item_saida" name="item_saida" required>
+        </div>
+        
+        <div>
+            <label for="valor_saida">Valor:</label>
+            <input type="number" id="valor_saida" name="valor_saida" required step="0.01" min="0">
+        </div>
+
+        <div>
+            <label for="venc_saida">Vencimento:</label>
+            <input type="date" id="venc_saida" name="venc_saida" required>
+        </div>
+
+        <div>
+            <label for="periodicidade_saida">Periodicidade:</label>
+            <input type="number" id="periodicidade_saida" name="periodicidade_saida" required>
+        </div>
+        
+        
+        <div>
+            <label for="categ_saida">Categoria:</label>
+            <select id="categ_saida" name="categ_saida" required>
+                <option value="" selected disabled>Selecione uma categoria.</option>
+                <option value="carro">Carro</option>
+                <option value="cursos">Cursos</option>
+                <option value="faturacartao">Fatura Cartão</option>
+                <option value="farmacia">Farmacia</option>
+                <option value="mercado">Mercado</option>
+                <option value="pascoa">Pascoa</option>
+                <option value="refeicao">Refeição</option>
+                <option value="role">Role</option>
+                <option value="saude">Saúde</option>
+                <option value="transporte">Transporte</option>
+                <option value="contascasa">Contas Casa</option>
+                <option value="emprestimo">Emprestimo</option>
+                <option value="dasmei">DAS MEI</option>
+                <option value="outros">Outros</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="forma_pagamento">Forma de Pagamento:</label>
+            <select id="forma_pagamento" name="forma_pagamento" required>
+                <option value="" selected disabled>Selecione uma Forma de pagamento.</option>
+                <option value="dinheiro">Dinheiro</option>
+                <option value="cartao">Cartão</option>
+                <option value="transferencia">Transferência</option>
+                <option value="pix">PIX</option>
+            </select>
+        </div>
+
+        <button type="submit">Registrar Saída</button>
+    </form>
+</body>
+</html>
