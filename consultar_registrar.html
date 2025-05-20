@@ -14,7 +14,7 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="consultar_registrar.html">Consultar/Registrar</a></li>
                 <li><a href="relatorio.html">Relatório</a></li>
-                <li><a href="ajuda.html">Ajuda</a></li>
+                <li><a href="configuracao.html">Configurações</a></li>
             </ul>
         </nav>
     </header>
@@ -66,11 +66,11 @@
                         <input type="number" id="valor_entrada" name="valor_entrada" required step="0.01" min="0">
                     </div>
                     <div>
-                        <label for="destino_entrada">Destino:</label>
+                        <label for="destino_entrada">Banco Destino:</label>
                         <select id="destino_entrada" name="destino_entrada" required>
                             <option value="" selected disabled>Selecione um destino</option>
                             <option value="poupanca">Poupança</option>
-                            <option value="investimentos_destino">Investimentos (Destino)</option> <!-- Renomeado para evitar conflito de valor com origem -->
+                            <option value="investimentos_destino">Investimentos (Destino)</option>
                             <option value="banco_bb">Banco do Brasil</option>
                             <option value="banco_itau">Itaú</option>
                             <option value="banco_bradesco">Bradesco</option>
@@ -155,8 +155,8 @@
                         <input type="text" id="descricao_conta_pagar" name="descricao_conta_pagar" required>
                     </div>
                     <div>
-                        <label for="categoria_conta_pagar">Categoria:</label>
-                        <select id="categoria_conta_pagar" name="categoria_conta_pagar" required>
+                        <label for="categ_conta_pagar">Categoria:</label>
+                        <select id="categ_conta_pagar" name="categ_conta_pagar" required>
                             <option value="" selected disabled>Selecione uma categoria</option>
                             <option value="carro_conta">Carro</option>
                             <option value="cursos_conta">Cursos</option>

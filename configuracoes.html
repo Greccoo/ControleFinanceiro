@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurações - Controle Financeiro</title>
+    <!-- Futuramente, link para o arquivo CSS aqui -->
+    <!-- <link rel="stylesheet" href="style.css"> -->
+</head>
+<body>
+    <header>
+        <h1>Meu Controle Financeiro</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="consultar_registrar.html">Consultar/Registrar</a></li>
+                <li><a href="relatorios.html">Relatórios</a></li>
+                <li><a href="configuracoes.html">Configurações</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Configurações Gerais</h2>
+
+        <section id="configIdioma">
+            <h3>Idioma</h3>
+            <form id="formConfigIdioma">
+                <label for="selectIdioma">Selecione o idioma desejado:</label>
+                <select id="selectIdioma" name="idioma">
+                    <option value="pt-br" selected>Português (Brasil)</option>
+                    <option value="en-us">Inglês (EUA)</option>
+                    <option value="es">Espanhol</option>
+                </select>
+                <button type="submit">Salvar Idioma</button>
+            </form>
+        </section>
+
+        <hr>
+
+        <section id="configListasDropdown">
+            <h3>Gerenciar Opções de Listas (Dropdowns)</h3>
+            
+            <article id="gerenciarCategoriasSaida">
+                <h4>Categorias de Saída</h4>
+                <ul id="listaCategoriasSaida">
+                    <!-- Exemplo, será preenchido dinamicamente -->
+                    <li>Alimentação <button type="button" class="btnEditarItemLista" data-tipo="categoriaSaida" data-id-item="1">Editar</button> <button type="button" class="btnExcluirItemLista" data-tipo="categoriaSaida" data-id-item="1">Excluir</button></li>
+                    <li>Transporte <button type="button" class="btnEditarItemLista" data-tipo="categoriaSaida" data-id-item="2">Editar</button> <button type="button" class="btnExcluirItemLista" data-tipo="categoriaSaida" data-id-item="2">Excluir</button></li>
+                </ul>
+                <button type="button" class="btnAdicionarItemLista" data-tipo="categoriaSaida">Adicionar Categoria de Saída</button>
+               
+                <div id="formAdicionarCategoriaSaida" style="display: none; margin-top: 10px;">
+                    <input type="text" id="inputNovaCategoriaSaida" placeholder="Nome da nova categoria de saída">
+                    <button type="button" class="btnSalvarNovoItem" data-tipo="categoriaSaida">Salvar</button>
+                    <button type="button" class="btnCancelarAdicao">Cancelar</button>
+                </div>
+            </article>
+
+            <article id="gerenciarOrigensEntrada">
+                <h4>Origens da Entrada</h4>
+                <ul id="listaOrigensEntrada">
+                    <!-- Exemplo -->
+                    <li>Salário <button type="button" class="btnEditarItemLista" data-tipo="origemEntrada" data-id-item="101">Editar</button> <button type="button" class="btnExcluirItemLista" data-tipo="origemEntrada" data-id-item="101">Excluir</button></li>
+                    <li>Venda <button type="button" class="btnEditarItemLista" data-tipo="origemEntrada" data-id-item="102">Editar</button> <button type="button" class="btnExcluirItemLista" data-tipo="origemEntrada" data-id-item="102">Excluir</button></li>
+                </ul>
+                <button type="button" class="btnAdicionarItemLista" data-tipo="origemEntrada">Adicionar Origem da Entrada</button>
+                
+                <div id="formAdicionarOrigemEntrada" style="display: none; margin-top: 10px;">
+                    <input type="text" id="inputNovaOrigemEntrada" placeholder="Nome da nova origem">
+                    <button type="button" class="btnSalvarNovoItem" data-tipo="origemEntrada">Salvar</button>
+                    <button type="button" class="btnCancelarAdicao">Cancelar</button>
+                </div>
+            </article>
+
+            <article id="gerenciarDestinosEntrada">
+                <h4>Destinos da Entrada</h4>
+                <ul id="listaDestinosEntrada">
+                    <!-- Exemplo -->
+                    <li>Banco do Brasil <button type="button" class="btnEditarItemLista" data-tipo="destinoEntrada" data-id-item="201">Editar</button> <button type="button" class="btnExcluirItemLista" data-tipo="destinoEntrada" data-id-item="201">Excluir</button></li>
+                    <li>Banco Santander <button type="button" class="btnEditarItemLista" data-tipo="destinoEntrada" data-id-item="202">Editar</button> <button type="button" class="btnExcluirItemLista" data-tipo="destinoEntrada" data-id-item="202">Excluir</button></li>
+                </ul>
+                <button type="button" class="btnAdicionarItemLista" data-tipo="destinoEntrada">Adicionar Destino da Entrada</button>
+                
+                <div id="formAdicionarDestinoEntrada" style="display: none; margin-top: 10px;">
+                    <input type="text" id="inputNovaDestinoEntrada" placeholder="Nome do novo destino">
+                    <button type="button" class="btnSalvarNovoItem" data-tipo="destinoEntrada">Salvar</button>
+                    <button type="button" class="btnCancelarAdicao">Cancelar</button>
+                </div>
+            </article>
+
+            <article id="gerenciarCategoriasContaPagar">
+                <h4>Categorias de Contas a Pagar</h4>
+                <ul id="listaCategoriasContaPagar">
+                    <!-- Exemplo -->
+                    <li>Aluguel <button type="button" class="btnEditarItemLista" data-tipo="categoriaContaPagar" data-id-item="301">Editar</button> <button type="button" class="btnExcluirItemLista" data-tipo="categoriaContaPagar" data-id-item="301">Excluir</button></li>
+                    <li>Fatura Cartão <button type="button" class="btnEditarItemLista" data-tipo="categoriaContaPagar" data-id-item="302">Editar</button> <button type="button" class="btnExcluirItemLista" data-tipo="categoriaContaPagar" data-id-item="302">Excluir</button></li>
+                </ul>
+                <button type="button" class="btnAdicionarItemLista" data-tipo="categoriaContaPagar">Adicionar Categoria de Conta a Pagar</button>
+                
+                <div id="formAdicionarCategoriaContaPagar" style="display: none; margin-top: 10px;">
+                    <input type="text" id="inputNovaCategoriaContaPagar" placeholder="Nome da nova categoria de conta a pagar">
+                    <button type="button" class="btnSalvarNovoItem" data-tipo="categoriaContaPagar">Salvar</button>
+                    <button type="button" class="btnCancelarAdicao">Cancelar</button>
+                </div>
+            </article>
+        </section>
+
+        <hr>
+
+        <section id="configContaUsuario">
+            <h3>Configurações da Conta</h3>
+            <article id="dadosPessoais">
+                <h4>Dados Pessoais</h4>
+                <ul>
+                    <li>Nome: <span id="displayNomeUsuario">Nome do Usuário</span> <button type="button" class="btnEditarDado" data-campo="nome">Editar</button></li>
+                    <li>Email: <span id="displayEmailUsuario">email@exemplo.com</span> <button type="button" class="btnEditarDado" data-campo="email">Editar</button></li>
+                </ul>
+            </article>
+            <article id="segurancaConta">
+                <h4>Segurança</h4>
+                <ul>
+                    <li><button type="button" id="btnAlterarSenha">Alterar Senha</button></li>
+                    <li><button type="button" id="btnConfigurar2FA">Autenticação de Dois Fatores (2FA)</button></li>
+                    <li><hr></li>
+                    <li><button type="button" id="btnLogout">Sair (Logout)</button></li>
+                    <li><button type="button" id="btnExcluirConta" style="color: red;">Excluir Minha Conta</button></li>
+                </ul>
+            </article>
+        </section>
+
+        <hr>
+
+        <section id="configHome">
+            <h3>Preferências da Página Inicial</h3>
+            <form id="formConfigHome">
+                <p>Selecione os cards/informações que deseja visualizar na página inicial:</p>
+                <div>
+                    <input type="checkbox" id="chkHomeContasAPagar" name="home_contas_a_pagar" value="contas_a_pagar">
+                    <label for="chkHomeContasAPagar">Card: Contas a Vencer</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="chkHomeContasPagas" name="home_contas_pagas" value="contas_pagas">
+                    <label for="chkHomeContasPagas">Card: Contas Pagas Recentemente</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="chkHomeEntradas" name="home_entradas" value="entradas">
+                    <label for="chkHomeEntradas">Card: Últimas Entradas</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="chkHomeSaldo" name="home_saldo" value="saldo">
+                    <label for="chkHomeSaldo">Card: Saldo Atual</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="chkHomeResumoMensal" name="home_resumo_mensal" value="resumo_mensal">
+                    <label for="chkHomeResumoMensal">Card: Resumo Financeiro Mensal</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="chkHomeGraficoDespesas" name="home_grafico_despesas" value="grafico_despesas">
+                    <label for="chkHomeGraficoDespesas">Gráfico: Despesas por Categoria</label>
+                </div>
+                <button type="submit">Salvar Preferências da Home</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>© <span id="anoAtual"></span> Mateus Carvalho Grecco / Projeto de Controle Financeiro</p>
+        <script>
+            document.getElementById('anoAtual').textContent = new Date().getFullYear();
+        </script>
+    </footer>
+</body>
+</html>
