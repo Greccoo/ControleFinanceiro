@@ -3,26 +3,185 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Relatório</title>
+    <title>Relatórios Financeiros - Controle Financeiro</title>
+    <!-- Futuramente, link para o arquivo CSS aqui -->
+    <!-- <link rel="stylesheet" href="style.css"> -->
 </head>
-
 <body>
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="consultar_registrar.html">Consultar/Registrar</a></li>
-            <li><a href="relatorio.html">Relatório</a></li>
-            <li><a href="configuracao.html">Configurações</a></li>
-        </ul>
-    </nav>
+    <header>
+        <h1>Meu Controle Financeiro</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="consultar_registrar.html">Consultar/Registrar</a></li>
+                <li><a href="relatorios.html">Relatórios</a></li>
+                <li><a href="configuracoes.html">Configurações</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <main>
-       
+        <h2>Relatórios Financeiros</h2>
+
+        <section id="relatorioGastosCategoria">
+            <h3>Gastos por Categoria (<span class="anoAtualGrafico"></span>)</h3>
+            <form id="formFiltroGastosCategoria">
+                <label for="periodoGastosCategoria">Período:</label>
+                <select id="periodoGastosCategoria" name="periodo">
+                    <option value="ano_inteiro" selected>Ano Inteiro</option>
+                    <option value="01">Janeiro</option>
+                    <option value="02">Fevereiro</option>
+                    <option value="03">Março</option>
+                    <option value="04">Abril</option>
+                    <option value="05">Maio</option>
+                    <option value="06">Junho</option>
+                    <option value="07">Julho</option>
+                    <option value="08">Agosto</option>
+                    <option value="09">Setembro</option>
+                    <option value="10">Outubro</option>
+                    <option value="11">Novembro</option>
+                    <option value="12">Dezembro</option>
+                </select>
+                <button type="submit">Gerar Relatório</button>
+            </form>
+            <div class="card-relatorio" id="cardGraficoGastosCategoria">
+                <!-- O gráfico de pizza/disco será renderizado aqui por JavaScript -->
+                <p><em>Gráfico de Gastos por Categoria aparecerá aqui.</em></p>
+                <canvas id="graficoPizzaGastosCategoria" width="400" height="200"></canvas> <!-- Canvas para o gráfico -->
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="relatorioEvolucaoSaldo">
+            <h3>Evolução de Saldo (<span class="anoAtualGrafico"></span>)</h3>
+            <form id="formFiltroEvolucaoSaldo">
+                <div>
+                    <label for="periodoEvolucaoSaldo">Período:</label>
+                    <select id="periodoEvolucaoSaldo" name="periodo">
+                        <option value="ano_inteiro" selected>Ano Inteiro</option>
+                        <option value="01">Janeiro</option>
+                        <option value="02">Fevereiro</option>
+                        <!-- ... outros meses ... -->
+                        <option value="12">Dezembro</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="bancoEvolucaoSaldo">Banco/Conta:</label>
+                    <select id="bancoEvolucaoSaldo" name="banco">
+                        <option value="todos" selected>Todos os Bancos (Saldo Total)</option>
+                        <!-- Opções de bancos/contas seriam carregadas dinamicamente ou viriam das configurações -->
+                        <option value="banco_bb">Banco do Brasil</option>
+                        <option value="banco_itau">Itaú</option>
+                        <option value="carteira">Carteira</option>
+                    </select>
+                </div>
+                <button type="submit">Gerar Relatório</button>
+            </form>
+            <div class="card-relatorio" id="cardGraficoEvolucaoSaldo">
+                <!-- O gráfico de linhas será renderizado aqui por JavaScript -->
+                <p><em>Gráfico de Evolução de Saldo aparecerá aqui.</em></p>
+                <canvas id="graficoLinhasEvolucaoSaldo" width="400" height="200"></canvas> <!-- Canvas para o gráfico -->
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="relatorioComparativoEntradaSaida">
+            <h3>Comparativo Entradas vs. Saídas (<span class="anoAtualGrafico"></span>)</h3>
+            <form id="formFiltroComparativo">
+                <div>
+                    <label for="periodoComparativo">Período:</label>
+                    <select id="periodoComparativo" name="periodo">
+                        <option value="ano_inteiro" selected>Ano Inteiro</option>
+                        <option value="01">Janeiro</option>
+                        <option value="02">Fevereiro</option>
+                        <!-- ... outros meses ... -->
+                        <option value="12">Dezembro</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="bancoComparativo">Banco/Conta:</label>
+                    <select id="bancoComparativo" name="banco">
+                        <option value="todos" selected>Todos os Bancos (Total)</option>
+                        <!-- Opções de bancos/contas -->
+                        <option value="banco_bb">Banco do Brasil</option>
+                        <option value="banco_itau">Itaú</option>
+                        <option value="carteira">Carteira</option>
+                    </select>
+                </div>
+                <button type="submit">Gerar Relatório</button>
+            </form>
+            <div class="card-relatorio" id="cardGraficoComparativo">
+                <!-- O gráfico misto será renderizado aqui por JavaScript -->
+                <p><em>Gráfico Comparativo Entradas vs. Saídas aparecerá aqui.</em></p>
+                <canvas id="graficoMistoComparativo" width="400" height="200"></canvas> <!-- Canvas para o gráfico -->
+            </div>
+        </section>
     </main>
 
     <footer>
-        <p>© 2025 Mateus Carvalho Grecco / Projeto de Controle Financeiro</p>
+        <p>© <span id="anoRodape"></span> Mateus Carvalho Grecco / Projeto de Controle Financeiro</p>
     </footer>
 
+    <script>
+        // Script para preencher o ano atual nos títulos dos gráficos e no rodapé
+        const anoAtual = new Date().getFullYear();
+        document.querySelectorAll('.anoAtualGrafico').forEach(span => {
+            span.textContent = anoAtual;
+        });
+        document.getElementById('anoRodape').textContent = anoAtual;
+
+        // Script para popular todos os meses nos selects de período (opcional, mas útil)
+        const meses = [
+            { valor: "01", nome: "Janeiro" }, { valor: "02", nome: "Fevereiro" },
+            { valor: "03", nome: "Março" }, { valor: "04", nome: "Abril" },
+            { valor: "05", nome: "Maio" }, { valor: "06", nome: "Junho" },
+            { valor: "07", nome: "Julho" }, { valor: "08", nome: "Agosto" },
+            { valor: "09", nome: "Setembro" }, { valor: "10", nome: "Outubro" },
+            { valor: "11", nome: "Novembro" }, { valor: "12", nome: "Dezembro" }
+        ];
+
+        function popularMesesSelect(selectId) {
+            const selectElement = document.getElementById(selectId);
+            // Limpa opções existentes exceto a primeira ("Ano Inteiro")
+            // Aqui estou assumindo que você pode querer adicionar as opções após a primeira já existente.
+            // Se o select estiver vazio exceto pela opção "Ano Inteiro", pode pular a limpeza ou adaptar.
+            
+            // Vamos garantir que a opção "Ano Inteiro" exista e seja a primeira
+            if (!selectElement.options[0] || selectElement.options[0].value !== "ano_inteiro") {
+                const anoInteiroOption = document.createElement('option');
+                anoInteiroOption.value = "ano_inteiro";
+                anoInteiroOption.textContent = "Ano Inteiro";
+                anoInteiroOption.selected = true; // Define como selecionado por padrão
+                selectElement.insertBefore(anoInteiroOption, selectElement.firstChild);
+            }
+            
+            meses.forEach(mes => {
+                // Verifica se a opção já não existe para evitar duplicatas se o script rodar mais de uma vez
+                let jaExiste = false;
+                for (let i = 0; i < selectElement.options.length; i++) {
+                    if (selectElement.options[i].value === mes.valor) {
+                        jaExiste = true;
+                        break;
+                    }
+                }
+                if (!jaExiste) {
+                    const option = document.createElement('option');
+                    option.value = mes.valor;
+                    option.textContent = mes.nome;
+                    selectElement.appendChild(option);
+                }
+            });
+        }
+        // Popula os selects de período
+        // (Certifique-se que os selects não tenham as opções de meses duplicadas no HTML se usar este script)
+        // Remova as opções de meses do HTML se for usar este script para popular
+        // popularMesesSelect('periodoGastosCategoria'); // Descomente se for usar
+        // popularMesesSelect('periodoEvolucaoSaldo');   // Descomente se for usar
+        // popularMesesSelect('periodoComparativo');    // Descomente se for usar
+        // Se você já colocou os meses no HTML, como no exemplo, não precisa deste script de popular meses.
+        // O script de ano atual já está funcionando acima.
+    </script>
 </body>
 </html>
